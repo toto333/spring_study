@@ -1,7 +1,7 @@
 ApplicationContext接口提供多个实现类。
 而在stand-alone模式下，通常会创建ClassPathXMlApplicationContext或FileSystemXMLApplicationContext的实例。  
 
-###init container
+### init container
 ```java
 ApplicationContext context = new ClassPathXmlApplicationContext("services.xml", "daos.xml");
 or
@@ -48,7 +48,7 @@ daos.xml
 
 </beans>
 ```
-###Using the Container
+### Using the Container
 ```java
 // create and configure beans
 ApplicationContext context = new ClassPathXmlApplicationContext("services.xml", "daos.xml");
@@ -60,7 +60,7 @@ PetStoreService service = context.getBean("petStore", PetStoreService.class);
 List<String> userList = service.getUsernameList();
 ```
 
-###Shutting Down the Spring IoC Container Gracefully in Non-Web Applications
+### Shutting Down the Spring IoC Container Gracefully in Non-Web Applications
 1. 仅适用于standalone模式的container，web模式container有自己的优雅关闭方式。
 2. 使用registerShutdownHook()可以将容器销毁时的回调钩子注册到jvm中，实现优雅的容器销毁。
 ```java
@@ -83,11 +83,11 @@ public final class Boot {
 ```
 
 -----------
-###Request, Session, Application, and WebSocket Scopes
+### Request, Session, Application, and WebSocket Scopes
 bean scope中的request, session, application, 和 websocket 不适用于ClassPathXmlApplicationContext这种standalone模式的上下文，会直接抛出IllegalStateException。这些scope仅适用于XmlWebApplicationContext。  
 
 --------------------------------
-###The ResourceLoader Interface
+### The ResourceLoader Interface
 ClassPathXmlApplicationContext实现了ResourceLoader接口，也具备了读取资源的能力。
 ```java
 public interface ResourceLoader {
